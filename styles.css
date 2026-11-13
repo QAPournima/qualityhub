@@ -134,21 +134,19 @@ h3 { margin: 0 0 8px; font-size: 16px; }
 .card ul, .steps { margin: 0; padding-left: 18px; }
 .card li, .steps li { margin: 7px 0; }
 .arch {
-  position: relative;
   border: 1px solid var(--line);
   border-radius: 18px;
   background:
     radial-gradient(700px 240px at 20% 0%, rgba(94, 234, 212, 0.08), transparent 55%),
     radial-gradient(600px 240px at 90% 100%, rgba(196, 181, 253, 0.1), transparent 50%),
     #0b1220;
-  overflow: visible;
   padding: 16px 12px 10px;
 }
 .arch-live {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 4px 12px 0;
+  margin: 4px 12px 8px;
   color: #86efac;
   font-size: 11px;
   font-weight: 800;
@@ -163,50 +161,57 @@ h3 { margin: 0 0 8px; font-size: 16px; }
   box-shadow: 0 0 10px #4ade80;
   animation: liveblink 1.2s ease-in-out infinite;
 }
-.arch-svg { display: block; width: 100%; height: auto; overflow: visible; }
-.arch-svg .wires { pointer-events: none; }
-.arch-svg .wire {
+.arch-board { position: relative; }
+.arch-base, .arch-overlay { display: block; width: 100%; height: auto; overflow: visible; }
+.arch-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.arch-overlay .wire-solid path {
   fill: none;
   stroke: #5eead4;
-  stroke-opacity: 0.9;
-  stroke-width: 2.4;
+  stroke-opacity: 0.35;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.arch-overlay .wire-dash path {
+  fill: none;
+  stroke: #5eead4;
+  stroke-width: 2.6;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-dasharray: 8 10;
   animation: dashmove 1.1s linear infinite;
 }
-.arch-svg .wire.faint { stroke: #c4b5fd; stroke-opacity: 0.85; }
-.arch-svg .box {
+.arch-base .box {
   fill: #122033;
   stroke-width: 1.8;
 }
-.arch-svg .box.cyan { stroke: #5eead4; }
-.arch-svg .box.blue { stroke: #7dd3fc; }
-.arch-svg .box.violet { stroke: #c4b5fd; }
-.arch-svg .box.gold { stroke: #fbbf24; }
-.arch-svg .box.hub { fill: #101826; stroke-width: 2; }
-.arch-svg .t1, .arch-svg .t2 { text-anchor: middle; font-family: Inter, ui-sans-serif, sans-serif; }
-.arch-svg .t1 { fill: #eef3ff; font-size: 16px; font-weight: 700; }
-.arch-svg .t1.big { font-size: 22px; }
-.arch-svg .t2 { fill: #9aa6c2; font-size: 12px; }
-.arch-svg .node.is-live .box {
-  filter: drop-shadow(0 0 12px rgba(94, 234, 212, 0.7));
-  stroke-width: 2.4;
-}
-.arch-svg .pkt { opacity: 0.95; }
+.arch-base .box.cyan { stroke: #5eead4; }
+.arch-base .box.blue { stroke: #7dd3fc; }
+.arch-base .box.violet { stroke: #c4b5fd; }
+.arch-base .box.gold { stroke: #fbbf24; }
+.arch-base .box.hub { fill: #101826; stroke-width: 2; }
+.arch-base .t1, .arch-base .t2 { text-anchor: middle; font-family: Inter, ui-sans-serif, sans-serif; }
+.arch-base .t1 { fill: #eef3ff; font-size: 16px; font-weight: 700; }
+.arch-base .t1.big { font-size: 22px; }
+.arch-base .t2 { fill: #9aa6c2; font-size: 12px; }
+.arch-base .node.is-live .box { stroke-width: 3; }
+.arch-overlay .pkt { opacity: 0.95; }
 @keyframes dashmove {
   to { stroke-dashoffset: -32; }
-}
-@keyframes boxglow {
-  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-  50% { filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.35)); }
 }
 @keyframes liveblink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .arch-svg .wire, .arch-svg .box, .arch-dot, .arch-svg .pkt { animation: none !important; }
+  .arch-overlay .wire-dash path, .arch-dot { animation: none !important; }
 }
 .demo {
   display: grid;
