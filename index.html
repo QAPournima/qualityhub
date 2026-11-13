@@ -100,85 +100,94 @@
       <p class="sub">A live request moves through Slack and Jira, into QualityHub, then GitHub CI. From there it splits: Playwright for web, a laptop-connected device for native mobile, and the LLM gateway for planning and investigation. Everything lands in one report.</p>
       <div class="arch" aria-label="Live architecture flow from Slack and Jira through QualityHub, GitHub CI, Playwright, native mobile and LLMs to a report">
         <p class="arch-live"><span class="arch-dot"></span> Live data flow</p>
-        <svg class="arch-svg" viewBox="0 0 1080 560" role="presentation">
+        <svg class="arch-svg" viewBox="0 0 1120 620" overflow="visible" role="presentation">
           <defs>
-            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-              <path d="M0 0 L10 5 L0 10 z" fill="#5eead4"/>
+            <marker id="ah" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="10" markerHeight="10" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0 1 L12 6 L0 11 z" fill="#5eead4"/>
             </marker>
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
               <feGaussianBlur stdDeviation="3.5" result="b"/>
               <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
           </defs>
-          <path id="p-slack" class="wire" d="M210 90 H270" marker-end="url(#ah)"/>
-          <path id="p-jira" class="wire" d="M210 190 H270" marker-end="url(#ah)"/>
-          <path id="p-hub-gh" class="wire" d="M550 120 H610" marker-end="url(#ah)"/>
-          <path id="p-hub-ci" class="wire" d="M550 165 C 700 165, 700 90, 830 90" marker-end="url(#ah)"/>
-          <path id="p-gh-ci" class="wire" d="M800 90 H830" marker-end="url(#ah)"/>
-          <path id="p-ci-web" class="wire" d="M925 128 V 250 H 390 V 300" marker-end="url(#ah)"/>
-          <path id="p-ci-mob" class="wire" d="M925 128 V 250 H 655 V 300" marker-end="url(#ah)"/>
-          <path id="p-ci-llm" class="wire" d="M925 128 V 250 H 915 V 300" marker-end="url(#ah)"/>
-          <path id="p-web-rep" class="wire" d="M390 390 V 430 H 540" marker-end="url(#ah)"/>
-          <path id="p-mob-rep" class="wire" d="M655 390 V 430" marker-end="url(#ah)"/>
-          <path id="p-llm-rep" class="wire" d="M915 390 V 430 H 770" marker-end="url(#ah)"/>
-          <path id="p-hub-rep" class="wire faint" d="M410 260 V 430" marker-end="url(#ah)"/>
 
-          <g class="node" data-flow="0">
-            <rect class="box cyan" x="40" y="50" width="170" height="80" rx="16"/>
-            <text class="t1" x="125" y="84">Slack</text>
-            <text class="t2" x="125" y="106">form · validate</text>
-          </g>
-          <g class="node" data-flow="1">
-            <rect class="box blue" x="40" y="150" width="170" height="80" rx="16"/>
-            <text class="t1" x="125" y="184">Jira / PR</text>
-            <text class="t2" x="125" y="206">read only</text>
-          </g>
-          <g class="node" data-flow="2">
-            <rect class="box violet hub" x="270" y="70" width="280" height="190" rx="20"/>
-            <text class="t1 big" x="410" y="118">QualityHub</text>
-            <text class="t2" x="410" y="146">queue · cancel · plans</text>
-            <text class="t2" x="410" y="168">planner · generator · agent</text>
-            <text class="t2" x="410" y="190">verdict · budget · live page</text>
-          </g>
-          <g class="node" data-flow="3">
-            <rect class="box gold" x="610" y="50" width="190" height="80" rx="16"/>
-            <text class="t1" x="705" y="84">GitHub</text>
-            <text class="t2" x="705" y="106">repo · PRs · any Git host</text>
-          </g>
-          <g class="node" data-flow="4">
-            <rect class="box gold" x="830" y="50" width="210" height="80" rx="16"/>
-            <text class="t1" x="935" y="84">GitHub CI</text>
-            <text class="t2" x="935" y="106">plan + run pipelines</text>
-          </g>
-          <g class="node" data-flow="5">
-            <rect class="box cyan" x="280" y="300" width="220" height="90" rx="16"/>
-            <text class="t1" x="390" y="338">Playwright</text>
-            <text class="t2" x="390" y="360">web · canary · AI tests</text>
-          </g>
-          <g class="node" data-flow="6">
-            <rect class="box blue" x="530" y="300" width="250" height="90" rx="16"/>
-            <text class="t1" x="655" y="338">Native mobile</text>
-            <text class="t2" x="655" y="360">device ↔ laptop USB / Wi-Fi</text>
-          </g>
-          <g class="node" data-flow="7">
-            <rect class="box violet" x="810" y="300" width="210" height="90" rx="16"/>
-            <text class="t1" x="915" y="338">LLM Gateway</text>
-            <text class="t2" x="915" y="360">model per step</text>
-          </g>
-          <g class="node" data-flow="8">
-            <rect class="box gold" x="280" y="430" width="740" height="80" rx="16"/>
-            <text class="t1" x="650" y="466">Live page, then report</text>
-            <text class="t2" x="650" y="488">/r/QH-id updates live · shareable evidence</text>
+          <g class="nodes">
+            <g class="node" data-flow="0">
+              <rect class="box cyan" x="32" y="56" width="188" height="76" rx="16"/>
+              <text class="t1" x="126" y="90">Slack</text>
+              <text class="t2" x="126" y="110">form · validate</text>
+            </g>
+            <g class="node" data-flow="1">
+              <rect class="box blue" x="32" y="156" width="188" height="76" rx="16"/>
+              <text class="t1" x="126" y="190">Jira / PR</text>
+              <text class="t2" x="126" y="210">read only</text>
+            </g>
+            <g class="node" data-flow="2">
+              <rect class="box violet hub" x="272" y="56" width="292" height="196" rx="20"/>
+              <text class="t1 big" x="418" y="116">QualityHub</text>
+              <text class="t2" x="418" y="144">queue · cancel · plans</text>
+              <text class="t2" x="418" y="166">planner · generator · agent</text>
+              <text class="t2" x="418" y="188">verdict · budget · live page</text>
+            </g>
+            <g class="node" data-flow="3">
+              <rect class="box gold" x="628" y="56" width="200" height="76" rx="16"/>
+              <text class="t1" x="728" y="90">GitHub</text>
+              <text class="t2" x="728" y="110">repo · PRs · any Git host</text>
+            </g>
+            <g class="node" data-flow="4">
+              <rect class="box gold" x="888" y="56" width="200" height="76" rx="16"/>
+              <text class="t1" x="988" y="90">GitHub CI</text>
+              <text class="t2" x="988" y="110">plan + run pipelines</text>
+            </g>
+            <g class="node" data-flow="5">
+              <rect class="box cyan" x="248" y="332" width="224" height="90" rx="16"/>
+              <text class="t1" x="360" y="370">Playwright</text>
+              <text class="t2" x="360" y="392">web · canary · AI tests</text>
+            </g>
+            <g class="node" data-flow="6">
+              <rect class="box blue" x="560" y="332" width="240" height="90" rx="16"/>
+              <text class="t1" x="680" y="370">Native mobile</text>
+              <text class="t2" x="680" y="392">device ↔ laptop USB / Wi-Fi</text>
+            </g>
+            <g class="node" data-flow="7">
+              <rect class="box violet" x="888" y="332" width="200" height="90" rx="16"/>
+              <text class="t1" x="988" y="370">LLM Gateway</text>
+              <text class="t2" x="988" y="392">model per step</text>
+            </g>
+            <g class="node" data-flow="8">
+              <rect class="box gold" x="248" y="488" width="840" height="84" rx="16"/>
+              <text class="t1" x="668" y="526">Live page, then report</text>
+              <text class="t2" x="668" y="548">/r/QH-id updates live · shareable evidence</text>
+            </g>
           </g>
 
-          <circle class="pkt" r="5" fill="#5eead4" filter="url(#glow)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p-slack"/></animateMotion></circle>
-          <circle class="pkt" r="5" fill="#7dd3fc" filter="url(#glow)"><animateMotion dur="2.8s" repeatCount="indefinite"><mpath href="#p-jira"/></animateMotion></circle>
-          <circle class="pkt" r="5" fill="#c4b5fd" filter="url(#glow)"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p-hub-gh"/></animateMotion></circle>
-          <circle class="pkt" r="5" fill="#fbbf24" filter="url(#glow)"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p-hub-ci"/></animateMotion></circle>
-          <circle class="pkt" r="4.5" fill="#5eead4" filter="url(#glow)"><animateMotion dur="3.6s" repeatCount="indefinite"><mpath href="#p-ci-web"/></animateMotion></circle>
-          <circle class="pkt" r="4.5" fill="#7dd3fc" filter="url(#glow)"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-ci-mob"/></animateMotion></circle>
-          <circle class="pkt" r="4.5" fill="#c4b5fd" filter="url(#glow)"><animateMotion dur="3.1s" repeatCount="indefinite"><mpath href="#p-ci-llm"/></animateMotion></circle>
-          <circle class="pkt" r="5" fill="#fbbf24" filter="url(#glow)"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-mob-rep"/></animateMotion></circle>
+          <g class="wires" fill="none">
+            <path id="p-slack" class="wire" d="M220 94 H260" marker-end="url(#ah)"/>
+            <path id="p-jira" class="wire" d="M220 194 H260" marker-end="url(#ah)"/>
+            <path id="p-hub-gh" class="wire" d="M564 94 H616" marker-end="url(#ah)"/>
+            <path id="p-gh-ci" class="wire" d="M828 94 H876" marker-end="url(#ah)"/>
+            <path id="p-ci-web" class="wire" d="M988 132 V 292 H 360 V 320" marker-end="url(#ah)"/>
+            <path id="p-ci-mob" class="wire" d="M988 132 V 292 H 680 V 320" marker-end="url(#ah)"/>
+            <path id="p-ci-llm" class="wire" d="M988 132 V 320" marker-end="url(#ah)"/>
+            <path id="p-hub-rep" class="wire faint" d="M516 252 V 476" marker-end="url(#ah)"/>
+            <path id="p-web-rep" class="wire" d="M360 422 V 476" marker-end="url(#ah)"/>
+            <path id="p-mob-rep" class="wire" d="M680 422 V 476" marker-end="url(#ah)"/>
+            <path id="p-llm-rep" class="wire" d="M988 422 V 476" marker-end="url(#ah)"/>
+          </g>
+
+          <g class="packets">
+            <circle class="pkt" r="5" fill="#5eead4" filter="url(#glow)"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p-slack"/></animateMotion></circle>
+            <circle class="pkt" r="5" fill="#7dd3fc" filter="url(#glow)"><animateMotion dur="2.6s" repeatCount="indefinite"><mpath href="#p-jira"/></animateMotion></circle>
+            <circle class="pkt" r="5" fill="#c4b5fd" filter="url(#glow)"><animateMotion dur="2.1s" repeatCount="indefinite"><mpath href="#p-hub-gh"/></animateMotion></circle>
+            <circle class="pkt" r="5" fill="#fbbf24" filter="url(#glow)"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#p-gh-ci"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#5eead4" filter="url(#glow)"><animateMotion dur="3.4s" repeatCount="indefinite"><mpath href="#p-ci-web"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#7dd3fc" filter="url(#glow)"><animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#p-ci-mob"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#c4b5fd" filter="url(#glow)"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#p-ci-llm"/></animateMotion></circle>
+            <circle class="pkt" r="5" fill="#fbbf24" filter="url(#glow)"><animateMotion dur="2.5s" repeatCount="indefinite"><mpath href="#p-hub-rep"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#5eead4" filter="url(#glow)"><animateMotion dur="2s" repeatCount="indefinite"><mpath href="#p-web-rep"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#7dd3fc" filter="url(#glow)"><animateMotion dur="2.1s" repeatCount="indefinite"><mpath href="#p-mob-rep"/></animateMotion></circle>
+            <circle class="pkt" r="4.5" fill="#c4b5fd" filter="url(#glow)"><animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#p-llm-rep"/></animateMotion></circle>
+          </g>
         </svg>
       </div>
       <div class="grid-3" style="margin-top:14px">

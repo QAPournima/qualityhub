@@ -141,8 +141,8 @@ h3 { margin: 0 0 8px; font-size: 16px; }
     radial-gradient(700px 240px at 20% 0%, rgba(94, 234, 212, 0.08), transparent 55%),
     radial-gradient(600px 240px at 90% 100%, rgba(196, 181, 253, 0.1), transparent 50%),
     #0b1220;
-  overflow: hidden;
-  padding: 12px 8px 8px;
+  overflow: visible;
+  padding: 16px 12px 10px;
 }
 .arch-live {
   display: flex;
@@ -163,21 +163,22 @@ h3 { margin: 0 0 8px; font-size: 16px; }
   box-shadow: 0 0 10px #4ade80;
   animation: liveblink 1.2s ease-in-out infinite;
 }
-.arch-svg { display: block; width: 100%; height: auto; }
+.arch-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.arch-svg .wires { pointer-events: none; }
 .arch-svg .wire {
   fill: none;
-  stroke: rgba(94, 234, 212, 0.55);
-  stroke-width: 2;
-  stroke-dasharray: 7 9;
+  stroke: #5eead4;
+  stroke-opacity: 0.9;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 8 10;
   animation: dashmove 1.1s linear infinite;
 }
-.arch-svg .wire.faint { stroke: rgba(196, 181, 253, 0.4); }
+.arch-svg .wire.faint { stroke: #c4b5fd; stroke-opacity: 0.85; }
 .arch-svg .box {
   fill: #122033;
-  stroke-width: 1.6;
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: boxidle 3.2s ease-in-out infinite;
+  stroke-width: 1.8;
 }
 .arch-svg .box.cyan { stroke: #5eead4; }
 .arch-svg .box.blue { stroke: #7dd3fc; }
@@ -189,21 +190,16 @@ h3 { margin: 0 0 8px; font-size: 16px; }
 .arch-svg .t1.big { font-size: 22px; }
 .arch-svg .t2 { fill: #9aa6c2; font-size: 12px; }
 .arch-svg .node.is-live .box {
-  animation: boxlive 0.7s ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.55));
+  filter: drop-shadow(0 0 12px rgba(94, 234, 212, 0.7));
+  stroke-width: 2.4;
 }
 .arch-svg .pkt { opacity: 0.95; }
 @keyframes dashmove {
   to { stroke-dashoffset: -32; }
 }
-@keyframes boxidle {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.015); }
-}
-@keyframes boxlive {
-  0% { transform: scale(1); }
-  40% { transform: scale(1.045); }
-  100% { transform: scale(1); }
+@keyframes boxglow {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  50% { filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.35)); }
 }
 @keyframes liveblink {
   0%, 100% { opacity: 1; }
