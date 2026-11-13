@@ -50,6 +50,20 @@ a { color: inherit; }
 .nav-links a { color: var(--muted); text-decoration: none; }
 .nav-links a:hover { color: var(--ink); }
 .hero { padding: 64px 0 28px; }
+.shot {
+  margin: 28px 0 0;
+  background: #0b1220;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.shot img { display: block; width: 100%; height: auto; }
+.shot figcaption {
+  margin: 0;
+  padding: 10px 14px 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
 .kicker {
   margin: 0 0 12px;
   color: var(--cyan);
