@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QualityHub | AI-Powered Quality Engineering &amp; Agentic Testing Platform</title>
+  <meta name="description" content="Designed and developed an AI-powered quality engineering platform that connects Slack, Jira, GitLab CI, Playwright and AI agents to automate test planning, execution, investigation and reporting." />
+  <link rel="canonical" href="https://qapournima.github.io/qualityhub/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body id="top">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./index.html">Quality<span>Hub</span></a>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#platform">Platform</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#ai">AI</a>
+        <a href="#status">Status</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">Flagship project · Aircall Messaging</p>
+      <h1>AI-Powered Quality Engineering &amp; Agentic Testing Platform</h1>
+      <p class="lede">Designed and developed an AI-powered quality engineering platform that connects Slack, Jira, GitLab CI, Playwright and AI agents to automate test planning, execution, investigation and reporting.</p>
+      <div class="states">
+        <span class="pill live">Core regression live</span>
+        <span class="pill build">AI execution in final integration</span>
+      </div>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://qapournima.github.io/QAPournima/">Back to CV</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/pournimatele/">LinkedIn</a>
+      </div>
+    </section>
+
+    <section id="problem">
+      <h2>The problem</h2>
+      <p class="sub">Staging validation lived in terminals, CI config and specialist knowledge. Product, support and engineers who needed a run had to wait for someone who could start one. Ticket work still needed a senior QA to read Jira, read the MR, plan coverage and chase evidence.</p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Before</h3>
+          <ul>
+            <li>Canary tests existed, but starting a targeted staging run was a specialist task.</li>
+            <li>Progress lived in GitLab job logs.</li>
+            <li>A ticket or MR still needed a person to turn requirements into a plan, then into tests, then into a verdict.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>After</h3>
+          <ul>
+            <li>Anyone on Messaging can start a run from Slack and follow a live page to a shareable report.</li>
+            <li>A ticket or MR can become an AI test plan, then catalog tests, then — in the AI flow — generated Playwright tests, agent take-over and an evidence-based verdict.</li>
+            <li>Software validation becomes accessible, intelligent and evidence-driven — not a hidden QA ritual.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="platform">
+      <h2>Not a test runner. A platform.</h2>
+      <p class="sub">QualityHub sits between how people work (Slack, Jira, MRs) and how software is proven (Playwright, GitLab CI, traces, reports). Humans stay in control: who can cancel, what data is missing, what is Failed versus Skipped, and when AI is allowed to spend.</p>
+      <div class="grid-3">
+        <article class="card"><h3>Accessible</h3><p>Slack form or <code>qualityhub validate</code>. No terminal. Queue, duplicates and cancel are first-class.</p></article>
+        <article class="card"><h3>Intelligent</h3><p>Planner reads the ticket and MR, writes coverage, data limits and priorities. Models are routed per step.</p></article>
+        <article class="card"><h3>Evidence-driven</h3><p>Live progress, pass/fail/skip with reasons, videos and Playwright traces on failures. Failed means failed twice with evidence.</p></article>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <h2>Architecture and stack</h2>
+      <p class="sub">Service, queue and Slack UI in Python. Plan and AI execution in a ticket-CI module. Runs happen in GitLab CI on staging. Reports are job artifacts behind company SSO.</p>
+      <div class="diagram" aria-hidden="true">
+        <svg viewBox="0 0 1080 280" xmlns="http://www.w3.org/2000/svg">
+          <rect width="1080" height="280" fill="#0b1220"/>
+          <g font-family="Inter, sans-serif" font-size="13" fill="#eef3ff">
+            <rect x="30" y="90" width="140" height="70" rx="14" fill="#122033" stroke="#5eead4"/>
+            <text x="100" y="130" text-anchor="middle">Slack</text>
+            <rect x="200" y="90" width="140" height="70" rx="14" fill="#122033" stroke="#7dd3fc"/>
+            <text x="270" y="122" text-anchor="middle">Jira / MR</text>
+            <text x="270" y="142" text-anchor="middle" fill="#9aa6c2">read only</text>
+            <rect x="400" y="54" width="280" height="172" rx="18" fill="#101826" stroke="#c4b5fd"/>
+            <text x="540" y="88" text-anchor="middle" font-weight="700">QualityHub</text>
+            <text x="540" y="118" text-anchor="middle" fill="#9aa6c2">queue · cancel · plans</text>
+            <text x="540" y="142" text-anchor="middle" fill="#9aa6c2">live page · reports</text>
+            <text x="540" y="166" text-anchor="middle" fill="#9aa6c2">planner · generator</text>
+            <text x="540" y="190" text-anchor="middle" fill="#9aa6c2">agent · verdict · budget</text>
+            <rect x="720" y="54" width="150" height="80" rx="14" fill="#122033" stroke="#fbbf24"/>
+            <text x="795" y="88" text-anchor="middle">GitLab CI</text>
+            <text x="795" y="110" text-anchor="middle" fill="#9aa6c2">plan + run</text>
+            <rect x="720" y="148" width="150" height="78" rx="14" fill="#122033" stroke="#7dd3fc"/>
+            <text x="795" y="182" text-anchor="middle">Playwright</text>
+            <text x="795" y="204" text-anchor="middle" fill="#9aa6c2">canary + AI tests</text>
+            <rect x="900" y="90" width="150" height="70" rx="14" fill="#122033" stroke="#5eead4"/>
+            <text x="975" y="122" text-anchor="middle">LLM Gateway</text>
+            <text x="975" y="142" text-anchor="middle" fill="#9aa6c2">model per step</text>
+            <path d="M170 125 H200" stroke="#5eead4" stroke-width="2"/>
+            <path d="M340 125 H400" stroke="#7dd3fc" stroke-width="2"/>
+            <path d="M680 125 H720" stroke="#c4b5fd" stroke-width="2"/>
+            <path d="M870 125 H900" stroke="#5eead4" stroke-width="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="grid-3" style="margin-top:14px">
+        <article class="card"><h3>Interface</h3><p>Slack, live progress page <code>/r/QH-id</code>, shareable report.</p></article>
+        <article class="card"><h3>Execution</h3><p>Python service, GitLab CI, Playwright canary + generated tests, browser agent.</p></article>
+        <article class="card"><h3>Intelligence</h3><p>Aircall LLM Gateway. Plan, generate, agent, classify and summarise each get their own model.</p></article>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>Slack to GitLab</h2>
+      <p class="sub">Two ways in. The form runs existing canary tests. Validate tests one ticket or MR. Both share the same queue, CI job, live page and report.</p>
+      <div class="demo">
+        <div class="demo-steps" role="tablist" aria-label="Platform walkthrough">
+          <button type="button" data-step="0" aria-current="true">1. Ask in Slack</button>
+          <button type="button" data-step="1">2. Queue and CI</button>
+          <button type="button" data-step="2">3. Watch live</button>
+          <button type="button" data-step="3">4. Keep the evidence</button>
+        </div>
+        <div class="demo-view" id="demo-view">
+          <p class="label">Ad-hoc or validate</p>
+          <h3>Start from Slack</h3>
+          <p>Pick tests by keyword or feature, or post <code>qualityhub validate &lt;ticket or MR&gt;</code>. Duplicates become a Following card. Only the requester can cancel.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <h2>AI planning, generation and agent take-over</h2>
+      <p class="sub">Validate is one flow. Catalog tests cover what already exists. AI rows cover the rest. A passing test goes to its verdict. A test that fails twice goes to the browser agent.</p>
+      <div class="grid-2">
+        <article class="card">
+          <h3>Plan</h3>
+          <p>Reads the Jira ticket and MR changes. Writes feature checks, bug repro and edge cases, each with a priority. Missing data skips only that row and asks for the data. Unreachable backend cases are marked covered elsewhere, not forced through the UI.</p>
+        </article>
+        <article class="card">
+          <h3>Generate, run, take over</h3>
+          <p>Writes a Playwright scenario per AI row. 90 seconds, one retry. A broken test is handed to a browser agent. Classify product bug versus test bug. Summarise a verdict for reviewers. Remaining rows skip when the run budget is reached — never marked passed.</p>
+        </article>
+      </div>
+      <div class="card" style="margin-top:12px; overflow:auto">
+        <h3>Model routing and cost</h3>
+        <p>Each step uses the cheapest model that can do it. Any step can be switched with an environment variable, no code change. Planner trials: about $0.10–$0.16 per ticket.</p>
+        <table>
+          <thead>
+            <tr><th>Step</th><th>Default</th><th>Why</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Plan</td><td>Sonnet 5.5</td><td>Coverage, edge cases, data limits</td></tr>
+            <tr><td>Generate tests</td><td>Sonnet 5.5</td><td>Playwright that must pass safety checks</td></tr>
+            <tr><td>Browser agent</td><td>Sonnet 5.5</td><td>Drive Chrome and judge what it sees</td></tr>
+            <tr><td>Classify failure</td><td>Haiku 4.5</td><td>Product bug or test bug</td></tr>
+            <tr><td>Summary</td><td>Opus 5.5</td><td>Verdict worded for reviewers</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px">Cap: $9 per validate run. When it is reached, remaining rows are Skipped: AI budget reached.</p>
+      </div>
+    </section>
+
+    <section id="status">
+      <h2>What’s live versus under development</h2>
+      <div class="grid-2">
+        <article class="card">
+          <p class="kicker">Live</p>
+          <h3>Regression from Slack</h3>
+          <ul>
+            <li>Slack form, queue, cancel, duplicate handling</li>
+            <li>GitLab CI canary run on staging</li>
+            <li>Live progress page and saved report with videos and traces</li>
+            <li>Validate plan + matching catalog tests</li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="kicker">Final integration</p>
+          <h3>AI execution</h3>
+          <ul>
+            <li>AI-written tests per plan row</li>
+            <li>Browser-agent take-over</li>
+            <li>Per-row verdict</li>
+            <li>Built and trialled locally; core regression is already on main</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Engineering decisions</h2>
+      <div class="card">
+        <ul>
+          <li>One platform, two entry points — form for canary, validate for a ticket or MR.</li>
+          <li>Failed = failed twice with evidence. Blocked twice = Skipped, with the reason. No unfinished rows.</li>
+          <li>Validate only reads MRs. It never comments on them.</li>
+          <li>Only the person who asked can cancel, through a private button.</li>
+          <li>Traces only for failed tests. Reports behind SSO.</li>
+          <li>Humans stay in the loop: AI proposes, automation executes, people own the verdict rules and the budget.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <p>© 2026 Pournima Tele · Internal Aircall Messaging work, shown here as a portfolio project.</p>
+    <nav>
+      <a href="https://qapournima.github.io/QAPournima/">CV</a>
+      ·
+      <a href="https://github.com/QAPournima/qualityhub">GitHub</a>
+      ·
+      <a href="https://www.linkedin.com/in/pournimatele/">LinkedIn</a>
+    </nav>
+  </footer>
+  <script>
+    var copy = [
+      { label: "Ad-hoc or validate", title: "Start from Slack", body: "Pick tests by keyword or feature, or post qualityhub validate with a ticket or MR. Duplicates become a Following card. Only the requester can cancel." },
+      { label: "Shared runner", title: "One queue, GitLab CI", body: "One run at a time. Queued requests wait. qualityhub-plan writes the plan; qualityhub-run executes canary tests and, in the AI flow, generated tests." },
+      { label: "Progress", title: "Live page /r/QH-id", body: "The page tails the GitLab job log test by test, then switches to the report. Slack shows live counts and the last result." },
+      { label: "Evidence", title: "Report, not a log dump", body: "Request details, pass/fail/skip per area, skip reasons, videos and Playwright traces for failures. Reviewers get a verdict they can share." }
+    ];
+    var view = document.getElementById("demo-view");
+    var buttons = document.querySelectorAll("[data-step]");
+    function show(i) {
+      var item = copy[i];
+      view.innerHTML = '<p class="label">' + item.label + "</p><h3>" + item.title + "</h3><p>" + item.body + "</p>";
+      buttons.forEach(function (btn) {
+        btn.setAttribute("aria-current", btn.getAttribute("data-step") === String(i) ? "true" : "false");
+      });
+    }
+    buttons.forEach(function (btn) {
+      btn.addEventListener("click", function () { show(btn.getAttribute("data-step")); });
+    });
+  </script>
+</body>
+</html>
