@@ -133,14 +133,85 @@ h3 { margin: 0 0 8px; font-size: 16px; }
 .card p, .card li { color: var(--muted); font-size: 14px; line-height: 1.55; }
 .card ul, .steps { margin: 0; padding-left: 18px; }
 .card li, .steps li { margin: 7px 0; }
-.diagram {
-  width: 100%;
+.arch {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: 18px;
-  background: #0b1220;
+  background:
+    radial-gradient(700px 240px at 20% 0%, rgba(94, 234, 212, 0.08), transparent 55%),
+    radial-gradient(600px 240px at 90% 100%, rgba(196, 181, 253, 0.1), transparent 50%),
+    #0b1220;
   overflow: hidden;
+  padding: 12px 8px 8px;
 }
-.diagram svg { display: block; width: 100%; height: auto; }
+.arch-live {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 12px 0;
+  color: #86efac;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.arch-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 10px #4ade80;
+  animation: liveblink 1.2s ease-in-out infinite;
+}
+.arch-svg { display: block; width: 100%; height: auto; }
+.arch-svg .wire {
+  fill: none;
+  stroke: rgba(94, 234, 212, 0.55);
+  stroke-width: 2;
+  stroke-dasharray: 7 9;
+  animation: dashmove 1.1s linear infinite;
+}
+.arch-svg .wire.faint { stroke: rgba(196, 181, 253, 0.4); }
+.arch-svg .box {
+  fill: #122033;
+  stroke-width: 1.6;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: boxidle 3.2s ease-in-out infinite;
+}
+.arch-svg .box.cyan { stroke: #5eead4; }
+.arch-svg .box.blue { stroke: #7dd3fc; }
+.arch-svg .box.violet { stroke: #c4b5fd; }
+.arch-svg .box.gold { stroke: #fbbf24; }
+.arch-svg .box.hub { fill: #101826; stroke-width: 2; }
+.arch-svg .t1, .arch-svg .t2 { text-anchor: middle; font-family: Inter, ui-sans-serif, sans-serif; }
+.arch-svg .t1 { fill: #eef3ff; font-size: 16px; font-weight: 700; }
+.arch-svg .t1.big { font-size: 22px; }
+.arch-svg .t2 { fill: #9aa6c2; font-size: 12px; }
+.arch-svg .node.is-live .box {
+  animation: boxlive 0.7s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(94, 234, 212, 0.55));
+}
+.arch-svg .pkt { opacity: 0.95; }
+@keyframes dashmove {
+  to { stroke-dashoffset: -32; }
+}
+@keyframes boxidle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+}
+@keyframes boxlive {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.045); }
+  100% { transform: scale(1); }
+}
+@keyframes liveblink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-svg .wire, .arch-svg .box, .arch-dot, .arch-svg .pkt { animation: none !important; }
+}
 .demo {
   display: grid;
   grid-template-columns: 220px 1fr;
