@@ -1,6 +1,6 @@
 # QualityHub
 
-**AI-Powered Quality Engineering & Agentic Testing Platform**
+**AI-Powered Quality Engineering & Agentic QA Validation Platform**
 
 Designed and developed an AI-powered quality engineering platform that connects Slack, Jira, GitHub, Playwright, native mobile and AI agents to automate test planning, execution, investigation and reporting.
 
